@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="DavkoveMazaniSouboruFrame">
+		<id_arg>0</id_arg>
+		<object class="wxBoxSizer" variable="MainSizer" member="no">
+			<object class="sizeritem">
+				<object class="wxPanel" name="ID_PANEL_OUTER_BORDER" variable="pnl_OuterBorder" member="yes">
+					<object class="wxBoxSizer" variable="bs_AboveSplitterWinSizer" member="no">
+						<object class="sizeritem">
+							<object class="wxSplitterWindow" name="ID_SPLITTERWINDOW_MAIN" variable="sw_MainSplitter" member="yes">
+								<minsize>300</minsize>
+								<orientation>vertical</orientation>
+								<style>wxSP_3D|wxSP_LIVE_UPDATE</style>
+								<object class="wxPanel" name="ID_PANEL_FILES" variable="pnl_Files" member="yes">
+									<object class="wxStaticBoxSizer" variable="sbs_Files" member="no">
+										<label>1. Files</label>
+										<orient>wxVERTICAL</orient>
+										<object class="sizeritem">
+											<object class="wxStaticText" name="ID_STATICTEXT_LABELS_HEADER" variable="st_LabelHeader" member="yes">
+												<label>Set the files you need to delete.&#x0A;&#x0A;If you already have a list of files to be deleted, you can load it here.&#x0A;The file to load should be a plain text file (.txt) with&#x0A;one file name per line.</label>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+										<object class="sizeritem">
+											<object class="wxBoxSizer" variable="bs_LoadButton" member="no">
+												<object class="sizeritem">
+													<object class="wxButton" name="ID_BUTTON_LOAD" variable="btn_Load" member="yes">
+														<label>&amp;Load</label>
+														<handler function="btn_Load_OnClick" entry="EVT_BUTTON" />
+													</object>
+													<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+										<object class="sizeritem">
+											<object class="wxTextCtrl" name="ID_TEXTCTRL_FILES" variable="txt_Files" member="yes">
+												<value>a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace</value>
+												<style>wxTE_MULTILINE|wxTE_DONTWRAP</style>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+									</object>
+								</object>
+								<object class="wxPanel" name="ID_PANEL_DIRECTORY" variable="pnl_Directory" member="yes">
+									<object class="wxStaticBoxSizer" variable="sbs_Directory" member="no">
+										<label>2. Directory</label>
+										<orient>wxVERTICAL</orient>
+										<object class="sizeritem">
+											<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+												<label>Open the directory where you want to delete the files from.</label>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+										<object class="sizeritem">
+											<object class="wxBoxSizer" variable="BoxSizer2" member="no">
+												<object class="sizeritem">
+													<object class="wxButton" name="ID_BUTTON_OPEN" variable="btn_Open" member="yes">
+														<label>&amp;Open</label>
+														<handler function="btn_Open_OnClick" entry="EVT_BUTTON" />
+													</object>
+													<flag>wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+										<object class="sizeritem">
+											<object class="wxStaticText" name="ID_STATICTEXT_FILES_TO_BE_DELETED" variable="txt_FilesToBeDeleted" member="yes">
+												<label>Check files to be deleted:</label>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+										<object class="sizeritem">
+											<object class="wxCheckListBox" name="ID_CHECKLISTBOX_FILES_TO_DELETE" variable="clb_FilesToDelete" member="yes">
+												<content>
+													<item>a</item>
+													<item>b</item>
+													<item checked="1">c</item>
+													<item>d</item>
+													<item>e</item>
+													<item></item>
+													<item>a</item>
+													<item>ab</item>
+													<item>abc</item>
+													<item>abcd</item>
+													<item>abcde</item>
+													<item>abcdef</item>
+												</content>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+										<object class="sizeritem">
+											<object class="wxBoxSizer" variable="bs_DeleteButton" member="no">
+												<orient>wxVERTICAL</orient>
+												<object class="sizeritem">
+													<object class="wxButton" name="ID_BUTTON_DELETE" variable="btn_Delete" member="yes">
+														<label>&amp;Delete</label>
+														<handler function="btn_Delete_OnClick" entry="EVT_BUTTON" />
+													</object>
+													<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT</flag>
+													<border>5</border>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND</flag>
+											<border>5</border>
+										</object>
+									</object>
+								</object>
+							</object>
+							<flag>wxALL|wxEXPAND</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND</flag>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+</wxsmith>
