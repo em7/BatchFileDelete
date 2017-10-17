@@ -52,14 +52,14 @@
 										<label>2. Directory</label>
 										<orient>wxVERTICAL</orient>
 										<object class="sizeritem">
-											<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+											<object class="wxStaticText" name="ID_STATICTEXT_OPEN_DIRECTORY" variable="st_OpenDirectory" member="yes">
 												<label>Open the directory where you want to delete the files from.</label>
 											</object>
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 										</object>
 										<object class="sizeritem">
-											<object class="wxBoxSizer" variable="BoxSizer2" member="no">
+											<object class="wxBoxSizer" variable="bs_OpenButton" member="no">
 												<object class="sizeritem">
 													<object class="wxButton" name="ID_BUTTON_OPEN" variable="btn_Open" member="yes">
 														<label>&amp;Open</label>
@@ -80,7 +80,7 @@
 											<border>5</border>
 										</object>
 										<object class="sizeritem">
-											<object class="wxCheckListBox" name="ID_CHECKLISTBOX_FILES_TO_DELETE" variable="clb_FilesToDelete" member="yes">
+											<object class="wxCheckListBox" name="ID_CHECKLISTBOX_FILES_IN_DIRECTORY" variable="clb_FilesInDirectory" member="yes">
 												<content>
 													<item>a</item>
 													<item>b</item>

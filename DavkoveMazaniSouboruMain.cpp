@@ -17,6 +17,12 @@
 #include <wx/string.h>
 //*)
 
+/////////////////////////////////////////////////////////////////////
+//                                                                 //
+// INITIALIZATION                                                  //
+//                                                                 //
+/////////////////////////////////////////////////////////////////////
+
 //helper functions
 enum wxbuildinfoformat {
     short_f, long_f };
@@ -43,20 +49,24 @@ wxString wxbuildinfo(wxbuildinfoformat format)
     return wxbuild;
 }
 
+
+
 //(*IdInit(DavkoveMazaniSouboruFrame)
 const long DavkoveMazaniSouboruFrame::ID_STATICTEXT_LABELS_HEADER = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_BUTTON_LOAD = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_TEXTCTRL_FILES = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_PANEL_FILES = wxNewId();
-const long DavkoveMazaniSouboruFrame::ID_STATICTEXT1 = wxNewId();
+const long DavkoveMazaniSouboruFrame::ID_STATICTEXT_OPEN_DIRECTORY = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_BUTTON_OPEN = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_STATICTEXT_FILES_TO_BE_DELETED = wxNewId();
-const long DavkoveMazaniSouboruFrame::ID_CHECKLISTBOX_FILES_TO_DELETE = wxNewId();
+const long DavkoveMazaniSouboruFrame::ID_CHECKLISTBOX_FILES_IN_DIRECTORY = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_BUTTON_DELETE = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_PANEL_DIRECTORY = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_SPLITTERWINDOW_MAIN = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_PANEL_OUTER_BORDER = wxNewId();
 //*)
+
+
 
 BEGIN_EVENT_TABLE(DavkoveMazaniSouboruFrame,wxFrame)
     //(*EventTable(DavkoveMazaniSouboruFrame)
@@ -71,7 +81,7 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     wxBoxSizer* bs_LoadButton;
     wxBoxSizer* bs_AboveSplitterWinSizer;
     wxBoxSizer* bs_DeleteButton;
-    wxBoxSizer* BoxSizer2;
+    wxBoxSizer* bs_OpenButton;
     wxStaticBoxSizer* sbs_Directory;
     wxStaticBoxSizer* sbs_Files;
 
@@ -97,28 +107,28 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     sbs_Files->SetSizeHints(pnl_Files);
     pnl_Directory = new wxPanel(sw_MainSplitter, ID_PANEL_DIRECTORY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL_DIRECTORY"));
     sbs_Directory = new wxStaticBoxSizer(wxVERTICAL, pnl_Directory, _("2. Directory"));
-    StaticText1 = new wxStaticText(pnl_Directory, ID_STATICTEXT1, _("Open the directory where you want to delete the files from."), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-    sbs_Directory->Add(StaticText1, 0, wxALL|wxEXPAND, 5);
-    BoxSizer2 = new wxBoxSizer(wxHORIZONTAL);
+    st_OpenDirectory = new wxStaticText(pnl_Directory, ID_STATICTEXT_OPEN_DIRECTORY, _("Open the directory where you want to delete the files from."), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT_OPEN_DIRECTORY"));
+    sbs_Directory->Add(st_OpenDirectory, 0, wxALL|wxEXPAND, 5);
+    bs_OpenButton = new wxBoxSizer(wxHORIZONTAL);
     btn_Open = new wxButton(pnl_Directory, ID_BUTTON_OPEN, _("&Open"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON_OPEN"));
-    BoxSizer2->Add(btn_Open, 0, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    sbs_Directory->Add(BoxSizer2, 0, wxALL|wxEXPAND, 5);
+    bs_OpenButton->Add(btn_Open, 0, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    sbs_Directory->Add(bs_OpenButton, 0, wxALL|wxEXPAND, 5);
     txt_FilesToBeDeleted = new wxStaticText(pnl_Directory, ID_STATICTEXT_FILES_TO_BE_DELETED, _("Check files to be deleted:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT_FILES_TO_BE_DELETED"));
     sbs_Directory->Add(txt_FilesToBeDeleted, 0, wxALL|wxEXPAND, 5);
-    clb_FilesToDelete = new wxCheckListBox(pnl_Directory, ID_CHECKLISTBOX_FILES_TO_DELETE, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHECKLISTBOX_FILES_TO_DELETE"));
-    clb_FilesToDelete->Append(_("a"));
-    clb_FilesToDelete->Append(_("b"));
-    clb_FilesToDelete->Check(clb_FilesToDelete->Append(_("c")));
-    clb_FilesToDelete->Append(_("d"));
-    clb_FilesToDelete->Append(_("e"));
-    clb_FilesToDelete->Append(wxEmptyString);
-    clb_FilesToDelete->Append(_("a"));
-    clb_FilesToDelete->Append(_("ab"));
-    clb_FilesToDelete->Append(_("abc"));
-    clb_FilesToDelete->Append(_("abcd"));
-    clb_FilesToDelete->Append(_("abcde"));
-    clb_FilesToDelete->Append(_("abcdef"));
-    sbs_Directory->Add(clb_FilesToDelete, 1, wxALL|wxEXPAND, 5);
+    clb_FilesInDirectory = new wxCheckListBox(pnl_Directory, ID_CHECKLISTBOX_FILES_IN_DIRECTORY, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHECKLISTBOX_FILES_IN_DIRECTORY"));
+    clb_FilesInDirectory->Append(_("a"));
+    clb_FilesInDirectory->Append(_("b"));
+    clb_FilesInDirectory->Check(clb_FilesInDirectory->Append(_("c")));
+    clb_FilesInDirectory->Append(_("d"));
+    clb_FilesInDirectory->Append(_("e"));
+    clb_FilesInDirectory->Append(wxEmptyString);
+    clb_FilesInDirectory->Append(_("a"));
+    clb_FilesInDirectory->Append(_("ab"));
+    clb_FilesInDirectory->Append(_("abc"));
+    clb_FilesInDirectory->Append(_("abcd"));
+    clb_FilesInDirectory->Append(_("abcde"));
+    clb_FilesInDirectory->Append(_("abcdef"));
+    sbs_Directory->Add(clb_FilesInDirectory, 1, wxALL|wxEXPAND, 5);
     bs_DeleteButton = new wxBoxSizer(wxVERTICAL);
     btn_Delete = new wxButton(pnl_Directory, ID_BUTTON_DELETE, _("&Delete"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON_DELETE"));
     bs_DeleteButton->Add(btn_Delete, 0, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT, 5);
@@ -147,8 +157,14 @@ DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
     //(*Destroy(DavkoveMazaniSouboruFrame)
     //*)
 
-    free(folderFilesFull);
+    free(m_folderFilesFull);
 }
+
+/////////////////////////////////////////////////////////////////////
+//                                                                 //
+// HANDLERS                                                        //
+//                                                                 //
+/////////////////////////////////////////////////////////////////////
 
 void DavkoveMazaniSouboruFrame::OnQuit(wxCommandEvent& event)
 {
@@ -164,11 +180,11 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
     if (wxID_OK == openDlg.ShowModal())
     {
         wxString* content = FilesToDelete::LoadFile(openDlg.GetPath());
-
         if (nullptr != content)
         {
             txt_Files->SetValue(*content);
             free(content);
+            UpdateFolderFilesCheck();
         }
     }
 }
@@ -180,22 +196,23 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
     if (wxID_OK == openDlg.ShowModal())
     {
         wxString dirName = openDlg.GetPath();
-        clb_FilesToDelete->Clear();
+        clb_FilesInDirectory->Clear();
 
-        free(folderFilesFull);
-        folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
-        if (! (nullptr == folderFilesFull || folderFilesFull->GetCount() < 1))
+        free(m_folderFilesFull);
+        m_folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
+        if (! (nullptr == m_folderFilesFull || m_folderFilesFull->GetCount() < 1))
         {
-            for(wxString& fullFileName : *folderFilesFull)
+            for(wxString& fullFileName : *m_folderFilesFull)
             {
                 wxString* name = FilesToDelete::GetFileName(fullFileName);
                 if (nullptr != name)
                 {
-                    clb_FilesToDelete->Append(*name);
+                    clb_FilesInDirectory->Append(*name);
                 }
 
                 free(name);
             }
+            UpdateFolderFilesCheck();
         }
     }
 }
@@ -204,4 +221,42 @@ void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
 {
     wxMessageDialog msgDlg(this, wxT("Hello World"));
     msgDlg.ShowModal();
+}
+
+
+wxArrayString DavkoveMazaniSouboruFrame::ParseFilesToDelete()
+{
+    wxArrayString fileNames;
+    int noOfLines = txt_Files->GetNumberOfLines();
+    for (int i = 0; i < noOfLines; i++)
+    {
+        fileNames.Add(txt_Files->GetLineText(i));
+    }
+    return fileNames;
+}
+
+void DavkoveMazaniSouboruFrame::CheckFilesInDirectory(wxArrayString& filesToDelete)
+{
+    for (unsigned int i = 0; i < clb_FilesInDirectory->GetCount(); i ++)
+    {
+        wxString fileInDir = clb_FilesInDirectory->GetString(i);
+
+        bool toDelete = false;
+        for (wxString& fileToDel : filesToDelete)
+        {
+            if (fileToDel == fileInDir)
+            {
+                toDelete = true;
+                break;
+            }
+        }
+
+        clb_FilesInDirectory->Check(i, toDelete);
+    }
+}
+
+void DavkoveMazaniSouboruFrame::UpdateFolderFilesCheck()
+{
+    wxArrayString filesToDel = ParseFilesToDelete();
+    CheckFilesInDirectory(filesToDel);
 }

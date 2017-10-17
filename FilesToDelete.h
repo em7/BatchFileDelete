@@ -40,6 +40,8 @@ namespace FilesToDelete
      * \return Just file name with extension or nullptr if fails
      */
     wxString* GetFileName(const wxString& fullPath);
+
+    const wxChar* GetEOL(); /**< Gets the line separator as defined in wxWidgets. */
 }
 
 

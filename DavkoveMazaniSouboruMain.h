@@ -34,11 +34,14 @@ class DavkoveMazaniSouboruFrame: public wxFrame
 
     private:
 
-        wxArrayString* folderFilesFull; /**< Full paths to the files in the folder */
+        wxArrayString* m_folderFilesFull; /**< Full paths to the files in the folder */
+
+        void UpdateFolderFilesCheck(); /**< Updates the checked/unchecked status of files depending on file list */
+        wxArrayString ParseFilesToDelete(); /**< Parses the content of txt_Files and returns array of lines */
+        void CheckFilesInDirectory(wxArrayString& filesToDelete); /**< Checks FilesInDirectory if their name is in filesToDelete, unchecks those which are not. */
 
         //(*Handlers(DavkoveMazaniSouboruFrame)
         void OnQuit(wxCommandEvent& event);
-        void OnAbout(wxCommandEvent& event);
         void btn_Load_OnClick(wxCommandEvent& event);
         void btn_Open_OnClick(wxCommandEvent& event);
         void btn_Delete_OnClick(wxCommandEvent& event);
@@ -49,10 +52,10 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         static const long ID_BUTTON_LOAD;
         static const long ID_TEXTCTRL_FILES;
         static const long ID_PANEL_FILES;
-        static const long ID_STATICTEXT1;
+        static const long ID_STATICTEXT_OPEN_DIRECTORY;
         static const long ID_BUTTON_OPEN;
         static const long ID_STATICTEXT_FILES_TO_BE_DELETED;
-        static const long ID_CHECKLISTBOX_FILES_TO_DELETE;
+        static const long ID_CHECKLISTBOX_FILES_IN_DIRECTORY;
         static const long ID_BUTTON_DELETE;
         static const long ID_PANEL_DIRECTORY;
         static const long ID_SPLITTERWINDOW_MAIN;
@@ -60,15 +63,15 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         //*)
 
         //(*Declarations(DavkoveMazaniSouboruFrame)
+        wxStaticText* st_OpenDirectory;
         wxTextCtrl* txt_Files;
         wxPanel* pnl_Directory;
-        wxStaticText* StaticText1;
         wxSplitterWindow* sw_MainSplitter;
         wxPanel* pnl_OuterBorder;
+        wxCheckListBox* clb_FilesInDirectory;
         wxButton* btn_Open;
         wxButton* btn_Load;
         wxStaticText* txt_FilesToBeDeleted;
-        wxCheckListBox* clb_FilesToDelete;
         wxButton* btn_Delete;
         wxPanel* pnl_Files;
         wxStaticText* st_LabelHeader;

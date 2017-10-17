@@ -14,6 +14,7 @@
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 #include <wx/dir.h>
+#include <wx/textfile.h>
 
 namespace FilesToDelete
 {
@@ -64,6 +65,11 @@ wxString* GetFileName(const wxString& fullPath)
 
     wxString* name = new wxString(wFn.GetFullName());
     return name;
+}
+
+const wxChar* GetEOL()
+{
+    return wxTextFile::GetEOL();
 }
 
 } // namespace FilesToDelete
