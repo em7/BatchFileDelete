@@ -1,7 +1,7 @@
 /***************************************************************
  * Name:      FilesToDelete.cpp
- * Purpose:   Header for functions for working with file
- *            containing the files to be deleted.
+ * Purpose:   Header for functions for working with
+ *            the files to be deleted.
  * Author:    em7 ()
  * Created:   2017-10-16
  * Copyright: em7 ()
@@ -42,6 +42,21 @@ namespace FilesToDelete
     wxString* GetFileName(const wxString& fullPath);
 
     const wxChar* GetEOL(); /**< Gets the line separator as defined in wxWidgets. */
+
+    /** \brief Finds a full path from allFullPaths matching to the fileName.
+     *  If thre are more matches in the allFullPaths, the first occurrence
+     *  is returned.
+     *
+     * \param fileName name of the file including extension, without directory path
+     * \param allFullPaths full paths (drive, directories, file name, extension) to
+     *        all possible files
+     * \return a pointer to element in allFullPaths, first match with fileName.
+     *         nullptr if no match
+     *
+     */
+    const wxString* FindMatchingFullPath(const wxString& fileName, const wxArrayString& allFullPaths);
+
+    bool DeleteFile(const wxString& fullPath); /**< Deletes the file matching the full file path. Returns true if success. */
 }
 
 

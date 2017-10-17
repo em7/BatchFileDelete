@@ -137,6 +137,8 @@
 		<Unit filename="DavkoveMazaniSouboruApp.h" />
 		<Unit filename="DavkoveMazaniSouboruMain.cpp" />
 		<Unit filename="DavkoveMazaniSouboruMain.h" />
+		<Unit filename="FilesToDelete.cpp" />
+		<Unit filename="FilesToDelete.h" />
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>

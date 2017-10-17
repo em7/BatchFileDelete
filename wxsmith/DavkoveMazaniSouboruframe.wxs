@@ -38,7 +38,6 @@
 										</object>
 										<object class="sizeritem">
 											<object class="wxTextCtrl" name="ID_TEXTCTRL_FILES" variable="txt_Files" member="yes">
-												<value>a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace</value>
 												<style>wxTE_MULTILINE|wxTE_DONTWRAP</style>
 												<handler function="txt_Files_OnText" entry="EVT_TEXT" />
 											</object>
@@ -81,22 +80,7 @@
 											<border>5</border>
 										</object>
 										<object class="sizeritem">
-											<object class="wxCheckListBox" name="ID_CHECKLISTBOX_FILES_IN_DIRECTORY" variable="clb_FilesInDirectory" member="yes">
-												<content>
-													<item>a</item>
-													<item>b</item>
-													<item checked="1">c</item>
-													<item>d</item>
-													<item>e</item>
-													<item></item>
-													<item>a</item>
-													<item>ab</item>
-													<item>abc</item>
-													<item>abcd</item>
-													<item>abcde</item>
-													<item>abcdef</item>
-												</content>
-											</object>
+											<object class="wxCheckListBox" name="ID_CHECKLISTBOX_FILES_IN_DIRECTORY" variable="clb_FilesInDirectory" member="yes" />
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>
 											<option>1</option>

@@ -41,6 +41,7 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         void UpdateFolderFilesCheck(); /**< Updates the checked/unchecked status of files depending on file list */
         wxArrayString ParseFilesToDelete(); /**< Parses the content of txt_Files and returns array of lines */
         void CheckFilesInDirectory(wxArrayString& filesToDelete); /**< Checks FilesInDirectory if their name is in filesToDelete, unchecks those which are not. */
+        bool DeleteFiles(); /**< Deletes the checked files. If success, returns true. */
 
         //(*Handlers(DavkoveMazaniSouboruFrame)
         void OnQuit(wxCommandEvent& event);

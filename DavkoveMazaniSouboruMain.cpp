@@ -100,7 +100,7 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     btn_Load = new wxButton(pnl_Files, ID_BUTTON_LOAD, _("&Load"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON_LOAD"));
     bs_LoadButton->Add(btn_Load, 0, wxTOP|wxBOTTOM|wxRIGHT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     sbs_Files->Add(bs_LoadButton, 0, wxALL|wxEXPAND, 5);
-    txt_Files = new wxTextCtrl(pnl_Files, ID_TEXTCTRL_FILES, _("a.ace\na.ace\na.ace\na.ace\na.ace\na.ace\na.ace"), wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_DONTWRAP, wxDefaultValidator, _T("ID_TEXTCTRL_FILES"));
+    txt_Files = new wxTextCtrl(pnl_Files, ID_TEXTCTRL_FILES, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE|wxTE_DONTWRAP, wxDefaultValidator, _T("ID_TEXTCTRL_FILES"));
     sbs_Files->Add(txt_Files, 1, wxALL|wxEXPAND, 5);
     pnl_Files->SetSizer(sbs_Files);
     sbs_Files->Fit(pnl_Files);
@@ -116,18 +116,6 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     txt_FilesToBeDeleted = new wxStaticText(pnl_Directory, ID_STATICTEXT_FILES_TO_BE_DELETED, _("Check files to be deleted:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT_FILES_TO_BE_DELETED"));
     sbs_Directory->Add(txt_FilesToBeDeleted, 0, wxALL|wxEXPAND, 5);
     clb_FilesInDirectory = new wxCheckListBox(pnl_Directory, ID_CHECKLISTBOX_FILES_IN_DIRECTORY, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHECKLISTBOX_FILES_IN_DIRECTORY"));
-    clb_FilesInDirectory->Append(_("a"));
-    clb_FilesInDirectory->Append(_("b"));
-    clb_FilesInDirectory->Check(clb_FilesInDirectory->Append(_("c")));
-    clb_FilesInDirectory->Append(_("d"));
-    clb_FilesInDirectory->Append(_("e"));
-    clb_FilesInDirectory->Append(wxEmptyString);
-    clb_FilesInDirectory->Append(_("a"));
-    clb_FilesInDirectory->Append(_("ab"));
-    clb_FilesInDirectory->Append(_("abc"));
-    clb_FilesInDirectory->Append(_("abcd"));
-    clb_FilesInDirectory->Append(_("abcde"));
-    clb_FilesInDirectory->Append(_("abcdef"));
     sbs_Directory->Add(clb_FilesInDirectory, 1, wxALL|wxEXPAND, 5);
     bs_DeleteButton = new wxBoxSizer(wxVERTICAL);
     btn_Delete = new wxButton(pnl_Directory, ID_BUTTON_DELETE, _("&Delete"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON_DELETE"));
@@ -205,7 +193,25 @@ void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
                            wxMessageBoxCaptionStr,
                            wxYES_NO|wxNO_DEFAULT);
     msgDlg.SetYesNoLabels(wxT("Smazat"), wxT("Zrušit akci"));
-    msgDlg.ShowModal();
+    if (wxID_YES == msgDlg.ShowModal())
+    {
+        if (!DeleteFiles())
+        {
+            wxMessageDialog errDlg(this,
+                                   wxT("Nepodařilo se smazat některé soubory."),
+                                   wxMessageBoxCaptionStr,
+                                   wxICON_ERROR);
+            errDlg.ShowModal();
+        }
+        else
+        {
+            wxMessageDialog okDlg(this,
+                                  wxT("Vybrané soubory byly úspěšně smazány."),
+                                  wxMessageBoxCaptionStr,
+                                  wxICON_INFORMATION);
+            okDlg.ShowModal();
+        }
+    }
 }
 
 void DavkoveMazaniSouboruFrame::txt_Files_OnKillFocus(wxFocusEvent& evt)
@@ -297,4 +303,39 @@ void DavkoveMazaniSouboruFrame::UpdateFolderFilesCheck()
     CheckFilesInDirectory(filesToDel);
 }
 
+bool DavkoveMazaniSouboruFrame::DeleteFiles()
+{
+    bool success = true;
+    if (nullptr == m_folderFilesFull)
+    {
+        success = false; //no directory open, nothing to do
+    }
+
+    wxArrayInt checkedIdxs;
+    if (success && 0 == clb_FilesInDirectory->GetCheckedItems(checkedIdxs))
+    {
+        success = false; //no checked files, nothing to do
+    }
+
+    if (success)
+    {
+        wxArrayString filePaths;
+        for (unsigned int i = 0; i < checkedIdxs.GetCount(); i++)
+        {
+            unsigned int itemIdx = checkedIdxs.Item(i);
+            wxString itemName = clb_FilesInDirectory->GetString(itemIdx);
+            const wxString* fullName = FilesToDelete::FindMatchingFullPath(itemName, *m_folderFilesFull);
+
+            std::cout << "Deleting file: " << fullName->c_str() << std::endl;
+            if (! FilesToDelete::DeleteFile(*fullName))
+            {
+                std::cerr << "Deleting file '" << fullName->c_str() << "' failed." << std::endl;
+                success = false;
+            }
+        }
+    }
+
+
+    return success;
+}
 

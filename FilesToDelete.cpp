@@ -1,7 +1,6 @@
 /***************************************************************
  * Name:      FilesToDelete.cpp
- * Purpose:   Functions for working with file containing the
- *            files to be deleted.
+ * Purpose:   Functions for working with the files to be deleted.
  * Author:    em7 ()
  * Created:   2017-10-16
  * Copyright: em7 ()
@@ -14,6 +13,7 @@
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
 #include <wx/dir.h>
+#include <wx/filefn.h>
 #include <wx/textfile.h>
 
 namespace FilesToDelete
@@ -71,5 +71,35 @@ const wxChar* GetEOL()
 {
     return wxTextFile::GetEOL();
 }
+
+const wxString* FindMatchingFullPath(const wxString& fileName, const wxArrayString& allFullPaths)
+{
+    for (const wxString& fullPath : allFullPaths)
+    {
+        wxFileName fName(fullPath);
+        if (fName.GetFullName() == fileName)
+        {
+            return &fullPath;
+        }
+    }
+
+    return nullptr;
+}
+
+bool DeleteFile(const wxString& fullPath)
+{
+    if (! wxFileExists(fullPath))
+    {
+        return false;
+    }
+
+    if (! wxRemoveFile(fullPath))
+    {
+        return false;
+    }
+
+    return true;
+}
+
 
 } // namespace FilesToDelete

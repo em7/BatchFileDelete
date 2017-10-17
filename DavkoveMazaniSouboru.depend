@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1508243966 source:c:\prg\davkovemazanisouboru\wx_pch.h
+1508256903 source:c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
@@ -2962,13 +2962,13 @@
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\cocoa\mdi.h
 	"wx/frame.h"
 
-1508166652 source:c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.cpp
+1508256903 source:c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.cpp
 	"wx_pch.h"
 	"DavkoveMazaniSouboruApp.h"
 	"DavkoveMazaniSouboruMain.h"
 	<wx/image.h>
 
-1508243966 c:\prg\davkovemazanisouboru\wx_pch.h
+1508256903 c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
@@ -2978,10 +2978,10 @@
 	<wx/file.h>
 	<wx/wx.h>
 
-1508166652 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
+1508256903 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
 	<wx/app.h>
 
-1508256723 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
+1508262351 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
 	<wx/sizer.h>
 	<wx/stattext.h>
 	<wx/textctrl.h>
@@ -2992,7 +2992,7 @@
 	<wx/frame.h>
 	<wx/arrstr.h>
 
-1508256770 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+1508265436 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"wx_pch.h"
 	"DavkoveMazaniSouboruMain.h"
 	"FilesToDelete.h"
@@ -3034,15 +3034,16 @@
 	"wx/window.h"
 	"wx/containr.h"
 
-1508253689 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
+1508265293 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
 	"FilesToDelete.h"
 	<wx/filename.h>
 	<wx/wfstream.h>
 	<wx/txtstrm.h>
 	<wx/dir.h>
+	<wx/filefn.h>
 	<wx/textfile.h>
 
-1508253674 c:\prg\davkovemazanisouboru\filestodelete.h
+1508265265 c:\prg\davkovemazanisouboru\filestodelete.h
 	"wx_pch.h"
 	<wx/arrstr.h>
 
