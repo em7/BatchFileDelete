@@ -147,9 +147,12 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     MainSizer->SetSizeHints(this);
 
     Connect(ID_BUTTON_LOAD,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::btn_Load_OnClick);
+    Connect(ID_TEXTCTRL_FILES,wxEVT_COMMAND_TEXT_UPDATED,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::txt_Files_OnText);
     Connect(ID_BUTTON_OPEN,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::btn_Open_OnClick);
     Connect(ID_BUTTON_DELETE,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::btn_Delete_OnClick);
     //*)
+
+    Connect(ID_TEXTCTRL_FILES,wxEVT_KILL_FOCUS,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::txt_Files_OnKillFocus);
 }
 
 DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
@@ -223,6 +226,23 @@ void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
     msgDlg.ShowModal();
 }
 
+void DavkoveMazaniSouboruFrame::txt_Files_OnKillFocus(wxFocusEvent& evt)
+{
+//    wxMessageDialog msgDlg(this, wxT("Hello World"));
+//    msgDlg.ShowModal();
+    UpdateFolderFilesCheck();
+}
+
+void DavkoveMazaniSouboruFrame::txt_Files_OnText(wxCommandEvent& event)
+{
+    UpdateFolderFilesCheck();
+}
+
+/////////////////////////////////////////////////////////////////////
+//                                                                 //
+// HELPER FUNCTIONS                                                //
+//                                                                 //
+/////////////////////////////////////////////////////////////////////
 
 wxArrayString DavkoveMazaniSouboruFrame::ParseFilesToDelete()
 {
@@ -260,3 +280,5 @@ void DavkoveMazaniSouboruFrame::UpdateFolderFilesCheck()
     wxArrayString filesToDel = ParseFilesToDelete();
     CheckFilesInDirectory(filesToDel);
 }
+
+

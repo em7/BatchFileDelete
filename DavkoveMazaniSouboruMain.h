@@ -45,7 +45,9 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         void btn_Load_OnClick(wxCommandEvent& event);
         void btn_Open_OnClick(wxCommandEvent& event);
         void btn_Delete_OnClick(wxCommandEvent& event);
+        void txt_Files_OnText(wxCommandEvent& event);
         //*)
+        void txt_Files_OnKillFocus(wxFocusEvent& evt);
 
         //(*Identifiers(DavkoveMazaniSouboruFrame)
         static const long ID_STATICTEXT_LABELS_HEADER;
