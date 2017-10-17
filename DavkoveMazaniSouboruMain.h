@@ -4,7 +4,7 @@
  * Author:    em7 ()
  * Created:   2017-10-16
  * Copyright: em7 ()
- * License:
+ * License:   WTFPL
  **************************************************************/
 
 #ifndef DAVKOVEMAZANISOUBORUMAIN_H
@@ -36,6 +36,8 @@ class DavkoveMazaniSouboruFrame: public wxFrame
 
         wxArrayString* m_folderFilesFull; /**< Full paths to the files in the folder */
 
+        void LoadFilesToDelete(const wxString& fileName); /**< Loads the file with files to be deleted, updates checked files in directory */
+        void LoadFilesInDirectory(const wxString& dirName); /**< Loads the files in the directory, sets their checked status, sets m_folderFilesFull */
         void UpdateFolderFilesCheck(); /**< Updates the checked/unchecked status of files depending on file list */
         wxArrayString ParseFilesToDelete(); /**< Parses the content of txt_Files and returns array of lines */
         void CheckFilesInDirectory(wxArrayString& filesToDelete); /**< Checks FilesInDirectory if their name is in filesToDelete, unchecks those which are not. */

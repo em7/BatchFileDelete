@@ -4,7 +4,7 @@
  * Author:    em7 ()
  * Created:   2017-10-16
  * Copyright: em7 ()
- * License:
+ * License:   WTFPL
  **************************************************************/
 
 #ifndef DAVKOVEMAZANISOUBORUAPP_H

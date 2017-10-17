@@ -4,7 +4,7 @@
  * Author:    em7 ()
  * Created:   2017-10-16
  * Copyright: em7 ()
- * License:
+ * License:   WTFPL
  **************************************************************/
 
 #include "wx_pch.h"
@@ -182,13 +182,8 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 
     if (wxID_OK == openDlg.ShowModal())
     {
-        wxString* content = FilesToDelete::LoadFile(openDlg.GetPath());
-        if (nullptr != content)
-        {
-            txt_Files->SetValue(*content);
-            free(content);
-            UpdateFolderFilesCheck();
-        }
+        wxString filePath = openDlg.GetPath();
+        LoadFilesToDelete(filePath);
     }
 }
 
@@ -199,24 +194,7 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
     if (wxID_OK == openDlg.ShowModal())
     {
         wxString dirName = openDlg.GetPath();
-        clb_FilesInDirectory->Clear();
-
-        free(m_folderFilesFull);
-        m_folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
-        if (! (nullptr == m_folderFilesFull || m_folderFilesFull->GetCount() < 1))
-        {
-            for(wxString& fullFileName : *m_folderFilesFull)
-            {
-                wxString* name = FilesToDelete::GetFileName(fullFileName);
-                if (nullptr != name)
-                {
-                    clb_FilesInDirectory->Append(*name);
-                }
-
-                free(name);
-            }
-            UpdateFolderFilesCheck();
-        }
+        LoadFilesInDirectory(dirName);
     }
 }
 
@@ -247,6 +225,40 @@ void DavkoveMazaniSouboruFrame::txt_Files_OnText(wxCommandEvent& event)
 // HELPER FUNCTIONS                                                //
 //                                                                 //
 /////////////////////////////////////////////////////////////////////
+
+void DavkoveMazaniSouboruFrame::LoadFilesToDelete(const wxString& fileName)
+{
+    wxString* content = FilesToDelete::LoadFile(fileName);
+    if (nullptr != content)
+    {
+        txt_Files->SetValue(*content);
+        free(content);
+        UpdateFolderFilesCheck();
+    }
+}
+
+void DavkoveMazaniSouboruFrame::LoadFilesInDirectory(const wxString& dirName)
+{
+    clb_FilesInDirectory->Clear();
+
+    free(m_folderFilesFull);
+    m_folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
+    if (! (nullptr == m_folderFilesFull || m_folderFilesFull->GetCount() < 1))
+    {
+        for(wxString& fullFileName : *m_folderFilesFull)
+        {
+            wxString* name = FilesToDelete::GetFileName(fullFileName);
+            if (nullptr != name)
+            {
+                clb_FilesInDirectory->Append(*name);
+            }
+
+            free(name);
+        }
+        UpdateFolderFilesCheck();
+    }
+}
+
 
 wxArrayString DavkoveMazaniSouboruFrame::ParseFilesToDelete()
 {
