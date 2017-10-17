@@ -13,8 +13,12 @@
 #include <wx/filename.h>
 #include <wx/wfstream.h>
 #include <wx/txtstrm.h>
+#include <wx/dir.h>
 
-wxString* FilesToDelete::LoadFile(const wxString& fileName)
+namespace FilesToDelete
+{
+
+wxString* LoadFile(const wxString& fileName)
 {
     wxFileName wFn(fileName);
 
@@ -37,3 +41,29 @@ wxString* FilesToDelete::LoadFile(const wxString& fileName)
     return content;
 }
 
+wxArrayString* EnumAllFiles(const wxString& dirName)
+{
+    if (! wxDir::Exists(dirName))
+    {
+        return nullptr;
+    }
+
+    wxArrayString* files = new wxArrayString();
+    wxDir::GetAllFiles(dirName, files, wxEmptyString, wxDIR_FILES);
+
+    return files;
+}
+
+wxString* GetFileName(const wxString& fullPath)
+{
+    wxFileName wFn(fullPath);
+    if (!(wFn.MakeAbsolute() && wFn.Exists() && wFn.IsFileReadable()))
+    {
+        return nullptr;
+    }
+
+    wxString* name = new wxString(wFn.GetFullName());
+    return name;
+}
+
+} // namespace FilesToDelete

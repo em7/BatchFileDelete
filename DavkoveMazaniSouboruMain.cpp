@@ -146,6 +146,8 @@ DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
 {
     //(*Destroy(DavkoveMazaniSouboruFrame)
     //*)
+
+    free(folderFilesFull);
 }
 
 void DavkoveMazaniSouboruFrame::OnQuit(wxCommandEvent& event)
@@ -163,7 +165,7 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
     {
         wxString* content = FilesToDelete::LoadFile(openDlg.GetPath());
 
-        if (content != nullptr)
+        if (nullptr != content)
         {
             txt_Files->SetValue(*content);
             free(content);
@@ -177,8 +179,24 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 
     if (wxID_OK == openDlg.ShowModal())
     {
-        wxMessageDialog msgDlg(this, openDlg.GetPath());
-        msgDlg.ShowModal();
+        wxString dirName = openDlg.GetPath();
+        clb_FilesToDelete->Clear();
+
+        free(folderFilesFull);
+        folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
+        if (! (nullptr == folderFilesFull || folderFilesFull->GetCount() < 1))
+        {
+            for(wxString& fullFileName : *folderFilesFull)
+            {
+                wxString* name = FilesToDelete::GetFileName(fullFileName);
+                if (nullptr != name)
+                {
+                    clb_FilesToDelete->Append(*name);
+                }
+
+                free(name);
+            }
+        }
     }
 }
 

@@ -2981,7 +2981,7 @@
 1508166652 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
 	<wx/app.h>
 
-1508184422 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
+1508250289 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
 	<wx/sizer.h>
 	<wx/stattext.h>
 	<wx/textctrl.h>
@@ -2990,10 +2990,12 @@
 	<wx/panel.h>
 	<wx/button.h>
 	<wx/frame.h>
+	<wx/arrstr.h>
 
-1508184472 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+1508249967 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"wx_pch.h"
 	"DavkoveMazaniSouboruMain.h"
+	"FilesToDelete.h"
 	<wx/intl.h>
 	<wx/string.h>
 
@@ -3032,14 +3034,16 @@
 	"wx/window.h"
 	"wx/containr.h"
 
-1508246109 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
+1508250019 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
 	"FilesToDelete.h"
 	<wx/filename.h>
 	<wx/wfstream.h>
 	<wx/txtstrm.h>
+	<wx/dir.h>
 
-1508243611 c:\prg\davkovemazanisouboru\filestodelete.h
+1508249630 c:\prg\davkovemazanisouboru\filestodelete.h
 	"wx_pch.h"
+	<wx/arrstr.h>
 
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wfstream.h
 	"wx/defs.h"
@@ -3059,4 +3063,9 @@
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\txtstrm.h
 	"wx/stream.h"
 	"wx/convauto.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\dir.h
+	"wx/longlong.h"
+	"wx/string.h"
+	"wx/filefn.h"
 

@@ -23,6 +23,8 @@
 //*)
 #endif
 
+#include <wx/arrstr.h>
+
 class DavkoveMazaniSouboruFrame: public wxFrame
 {
     public:
@@ -31,6 +33,8 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         virtual ~DavkoveMazaniSouboruFrame();
 
     private:
+
+        wxArrayString* folderFilesFull; /**< Full paths to the files in the folder */
 
         //(*Handlers(DavkoveMazaniSouboruFrame)
         void OnQuit(wxCommandEvent& event);

@@ -8,7 +8,7 @@
 					<object class="wxBoxSizer" variable="bs_AboveSplitterWinSizer" member="no">
 						<object class="sizeritem">
 							<object class="wxSplitterWindow" name="ID_SPLITTERWINDOW_MAIN" variable="sw_MainSplitter" member="yes">
-								<minsize>300</minsize>
+								<minsize>250</minsize>
 								<orientation>vertical</orientation>
 								<style>wxSP_3D|wxSP_LIVE_UPDATE</style>
 								<object class="wxPanel" name="ID_PANEL_FILES" variable="pnl_Files" member="yes">
