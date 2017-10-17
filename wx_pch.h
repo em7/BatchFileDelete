@@ -18,6 +18,8 @@
 #include <wx/string.h>
 #include <wx/splitter.h>
 
+#include <wx/file.h>
+
 #ifdef __BORLANDC__
     #pragma hdrstop
 #endif

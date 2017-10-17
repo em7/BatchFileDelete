@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1508181137 source:c:\prg\davkovemazanisouboru\wx_pch.h
+1508243966 source:c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
 	<wx/intl.h>
 	<wx/string.h>
 	<wx/splitter.h>
+	<wx/file.h>
 	<wx/wx.h>
 
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wxprec.h
@@ -2967,13 +2968,14 @@
 	"DavkoveMazaniSouboruMain.h"
 	<wx/image.h>
 
-1508181137 c:\prg\davkovemazanisouboru\wx_pch.h
+1508243966 c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
 	<wx/intl.h>
 	<wx/string.h>
 	<wx/splitter.h>
+	<wx/file.h>
 	<wx/wx.h>
 
 1508166652 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
@@ -2989,7 +2991,7 @@
 	<wx/button.h>
 	<wx/frame.h>
 
-1508182425 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+1508184472 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"wx_pch.h"
 	"DavkoveMazaniSouboruMain.h"
 	<wx/intl.h>
@@ -3029,4 +3031,32 @@
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\generic\splitter.h
 	"wx/window.h"
 	"wx/containr.h"
+
+1508246109 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
+	"FilesToDelete.h"
+	<wx/filename.h>
+	<wx/wfstream.h>
+	<wx/txtstrm.h>
+
+1508243611 c:\prg\davkovemazanisouboru\filestodelete.h
+	"wx_pch.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wfstream.h
+	"wx/defs.h"
+	"wx/object.h"
+	"wx/string.h"
+	"wx/stream.h"
+	"wx/file.h"
+	"wx/ffile.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\ffile.h
+	"wx/defs.h"
+	"wx/string.h"
+	"wx/filefn.h"
+	"wx/convauto.h"
+	<stdio.h>
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\txtstrm.h
+	"wx/stream.h"
+	"wx/convauto.h"
 

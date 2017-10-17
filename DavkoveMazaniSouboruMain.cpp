@@ -10,6 +10,7 @@
 #include "wx_pch.h"
 #include "DavkoveMazaniSouboruMain.h"
 
+#include "FilesToDelete.h"
 
 //(*InternalHeaders(DavkoveMazaniSouboruFrame)
 #include <wx/intl.h>
@@ -79,7 +80,7 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     pnl_OuterBorder = new wxPanel(this, ID_PANEL_OUTER_BORDER, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL_OUTER_BORDER"));
     bs_AboveSplitterWinSizer = new wxBoxSizer(wxHORIZONTAL);
     sw_MainSplitter = new wxSplitterWindow(pnl_OuterBorder, ID_SPLITTERWINDOW_MAIN, wxDefaultPosition, wxDefaultSize, wxSP_3D|wxSP_LIVE_UPDATE, _T("ID_SPLITTERWINDOW_MAIN"));
-    sw_MainSplitter->SetMinimumPaneSize(300);
+    sw_MainSplitter->SetMinimumPaneSize(250);
     sw_MainSplitter->SetSashGravity(0.5);
     pnl_Files = new wxPanel(sw_MainSplitter, ID_PANEL_FILES, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL_FILES"));
     sbs_Files = new wxStaticBoxSizer(wxVERTICAL, pnl_Files, _("1. Files"));
@@ -160,7 +161,13 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 
     if (wxID_OK == openDlg.ShowModal())
     {
-        txt_Files->SetValue(openDlg.GetFilename());
+        wxString* content = FilesToDelete::LoadFile(openDlg.GetPath());
+
+        if (content != nullptr)
+        {
+            txt_Files->SetValue(*content);
+            free(content);
+        }
     }
 }
 
