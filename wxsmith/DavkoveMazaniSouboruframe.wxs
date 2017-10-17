@@ -40,6 +40,7 @@
 											<object class="wxTextCtrl" name="ID_TEXTCTRL_FILES" variable="txt_Files" member="yes">
 												<value>a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace&#x0A;a.ace</value>
 												<style>wxTE_MULTILINE|wxTE_DONTWRAP</style>
+												<handler function="txt_Files_OnText" entry="EVT_TEXT" />
 											</object>
 											<flag>wxALL|wxEXPAND</flag>
 											<border>5</border>

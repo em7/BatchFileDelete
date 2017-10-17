@@ -222,7 +222,11 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 
 void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
 {
-    wxMessageDialog msgDlg(this, wxT("Hello World"));
+    wxMessageDialog msgDlg(this,
+                           wxT("Opravdu chceš smazat vybrané soubory?\nTuto akci nelze vzít zpět."),
+                           wxMessageBoxCaptionStr,
+                           wxYES_NO|wxNO_DEFAULT);
+    msgDlg.SetYesNoLabels(wxT("Smazat"), wxT("Zrušit akci"));
     msgDlg.ShowModal();
 }
 
