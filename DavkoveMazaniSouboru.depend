@@ -2981,7 +2981,7 @@
 1508256903 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
 	<wx/app.h>
 
-1508262351 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
+1508266167 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
 	<wx/sizer.h>
 	<wx/stattext.h>
 	<wx/textctrl.h>
@@ -2992,7 +2992,7 @@
 	<wx/frame.h>
 	<wx/arrstr.h>
 
-1508265436 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+1508266606 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"wx_pch.h"
 	"DavkoveMazaniSouboruMain.h"
 	"FilesToDelete.h"

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
 	<object class="wxFrame" name="DavkoveMazaniSouboruFrame">
+		<size>800,550</size>
+		<minsize>800,550</minsize>
 		<id_arg>0</id_arg>
 		<object class="wxBoxSizer" variable="MainSizer" member="no">
 			<object class="sizeritem">
 				<object class="wxPanel" name="ID_PANEL_OUTER_BORDER" variable="pnl_OuterBorder" member="yes">
 					<object class="wxBoxSizer" variable="bs_AboveSplitterWinSizer" member="no">
+						<orient>wxVERTICAL</orient>
 						<object class="sizeritem">
 							<object class="wxSplitterWindow" name="ID_SPLITTERWINDOW_MAIN" variable="sw_MainSplitter" member="yes">
 								<minsize>250</minsize>
 								<orientation>vertical</orientation>
 								<style>wxSP_3D|wxSP_LIVE_UPDATE</style>
 								<object class="wxPanel" name="ID_PANEL_FILES" variable="pnl_Files" member="yes">
+									<minsize>250,550</minsize>
 									<object class="wxStaticBoxSizer" variable="sbs_Files" member="no">
 										<label>1. Files</label>
 										<orient>wxVERTICAL</orient>
@@ -48,6 +52,7 @@
 									</object>
 								</object>
 								<object class="wxPanel" name="ID_PANEL_DIRECTORY" variable="pnl_Directory" member="yes">
+									<minsize>250,550</minsize>
 									<object class="wxStaticBoxSizer" variable="sbs_Directory" member="no">
 										<label>2. Directory</label>
 										<orient>wxVERTICAL</orient>
@@ -85,27 +90,27 @@
 											<border>5</border>
 											<option>1</option>
 										</object>
-										<object class="sizeritem">
-											<object class="wxBoxSizer" variable="bs_DeleteButton" member="no">
-												<orient>wxVERTICAL</orient>
-												<object class="sizeritem">
-													<object class="wxButton" name="ID_BUTTON_DELETE" variable="btn_Delete" member="yes">
-														<label>&amp;Delete</label>
-														<handler function="btn_Delete_OnClick" entry="EVT_BUTTON" />
-													</object>
-													<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT</flag>
-													<border>5</border>
-												</object>
-											</object>
-											<flag>wxALL|wxEXPAND</flag>
-											<border>5</border>
-										</object>
 									</object>
 								</object>
 							</object>
 							<flag>wxALL|wxEXPAND</flag>
 							<border>5</border>
 							<option>1</option>
+						</object>
+						<object class="sizeritem">
+							<object class="wxBoxSizer" variable="bs_DeleteButton" member="no">
+								<orient>wxVERTICAL</orient>
+								<object class="sizeritem">
+									<object class="wxButton" name="ID_BUTTON_DELETE" variable="btn_Delete" member="yes">
+										<label>&amp;Delete</label>
+										<handler function="btn_Delete_OnClick" entry="EVT_BUTTON" />
+									</object>
+									<flag>wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT</flag>
+									<border>5</border>
+								</object>
+							</object>
+							<flag>wxALL|wxEXPAND</flag>
+							<border>5</border>
 						</object>
 					</object>
 				</object>

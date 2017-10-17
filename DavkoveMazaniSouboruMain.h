@@ -61,9 +61,9 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         static const long ID_BUTTON_OPEN;
         static const long ID_STATICTEXT_FILES_TO_BE_DELETED;
         static const long ID_CHECKLISTBOX_FILES_IN_DIRECTORY;
-        static const long ID_BUTTON_DELETE;
         static const long ID_PANEL_DIRECTORY;
         static const long ID_SPLITTERWINDOW_MAIN;
+        static const long ID_BUTTON_DELETE;
         static const long ID_PANEL_OUTER_BORDER;
         //*)
 
