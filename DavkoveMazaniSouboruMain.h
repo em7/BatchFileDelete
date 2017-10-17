@@ -18,12 +18,14 @@
 #include <wx/checklst.h>
 #include <wx/splitter.h>
 #include <wx/panel.h>
+#include <wx/hyperlink.h>
 #include <wx/button.h>
 #include <wx/frame.h>
 //*)
 #endif
 
-#include <wx/arrstr.h>
+#include "wx_pch.h"
+#include "FilesToDelete.h"
 
 class DavkoveMazaniSouboruFrame: public wxFrame
 {
@@ -63,6 +65,8 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         static const long ID_CHECKLISTBOX_FILES_IN_DIRECTORY;
         static const long ID_PANEL_DIRECTORY;
         static const long ID_SPLITTERWINDOW_MAIN;
+        static const long ID_STATICTEXT_WEB;
+        static const long ID_HYPERLINKCTRL_WEB;
         static const long ID_BUTTON_DELETE;
         static const long ID_PANEL_OUTER_BORDER;
         //*)
@@ -71,6 +75,7 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         wxStaticText* st_OpenDirectory;
         wxTextCtrl* txt_Files;
         wxPanel* pnl_Directory;
+        wxHyperlinkCtrl* hc_Web;
         wxSplitterWindow* sw_MainSplitter;
         wxPanel* pnl_OuterBorder;
         wxCheckListBox* clb_FilesInDirectory;
@@ -79,6 +84,7 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         wxStaticText* txt_FilesToBeDeleted;
         wxButton* btn_Delete;
         wxPanel* pnl_Files;
+        wxStaticText* st_Web;
         wxStaticText* st_LabelHeader;
         //*)
 

@@ -7,14 +7,11 @@
  * License:   WTFPL
  **************************************************************/
 
-#include "wx_pch.h"
 #include "DavkoveMazaniSouboruMain.h"
 
-#include "FilesToDelete.h"
+#include "Translations.h"
 
 //(*InternalHeaders(DavkoveMazaniSouboruFrame)
-#include <wx/intl.h>
-#include <wx/string.h>
 //*)
 
 /////////////////////////////////////////////////////////////////////
@@ -62,6 +59,8 @@ const long DavkoveMazaniSouboruFrame::ID_STATICTEXT_FILES_TO_BE_DELETED = wxNewI
 const long DavkoveMazaniSouboruFrame::ID_CHECKLISTBOX_FILES_IN_DIRECTORY = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_PANEL_DIRECTORY = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_SPLITTERWINDOW_MAIN = wxNewId();
+const long DavkoveMazaniSouboruFrame::ID_STATICTEXT_WEB = wxNewId();
+const long DavkoveMazaniSouboruFrame::ID_HYPERLINKCTRL_WEB = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_BUTTON_DELETE = wxNewId();
 const long DavkoveMazaniSouboruFrame::ID_PANEL_OUTER_BORDER = wxNewId();
 //*)
@@ -80,7 +79,8 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     wxBoxSizer* MainSizer;
     wxBoxSizer* bs_LoadButton;
     wxBoxSizer* bs_AboveSplitterWinSizer;
-    wxBoxSizer* bs_DeleteButton;
+    wxBoxSizer* bs_BottomInner;
+    wxBoxSizer* bs_BottomOuter;
     wxBoxSizer* bs_OpenButton;
     wxStaticBoxSizer* sbs_Directory;
     wxStaticBoxSizer* sbs_Files;
@@ -127,10 +127,16 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     sbs_Directory->SetSizeHints(pnl_Directory);
     sw_MainSplitter->SplitVertically(pnl_Files, pnl_Directory);
     bs_AboveSplitterWinSizer->Add(sw_MainSplitter, 1, wxALL|wxEXPAND, 5);
-    bs_DeleteButton = new wxBoxSizer(wxVERTICAL);
+    bs_BottomOuter = new wxBoxSizer(wxVERTICAL);
+    bs_BottomInner = new wxBoxSizer(wxHORIZONTAL);
+    st_Web = new wxStaticText(pnl_OuterBorder, ID_STATICTEXT_WEB, _("Web:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT_WEB"));
+    bs_BottomInner->Add(st_Web, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    hc_Web = new wxHyperlinkCtrl(pnl_OuterBorder, ID_HYPERLINKCTRL_WEB, _("https://github.com/em7/BatchFileDelete"), _("https://github.com/em7/BatchFileDelete/blob/master/README.md"), wxDefaultPosition, wxDefaultSize, wxHL_CONTEXTMENU|wxHL_ALIGN_CENTRE|wxNO_BORDER, _T("ID_HYPERLINKCTRL_WEB"));
+    bs_BottomInner->Add(hc_Web, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5);
     btn_Delete = new wxButton(pnl_OuterBorder, ID_BUTTON_DELETE, _("&Delete"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON_DELETE"));
-    bs_DeleteButton->Add(btn_Delete, 0, wxTOP|wxBOTTOM|wxLEFT|wxALIGN_RIGHT, 5);
-    bs_AboveSplitterWinSizer->Add(bs_DeleteButton, 0, wxALL|wxEXPAND, 5);
+    bs_BottomInner->Add(btn_Delete, 0, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    bs_BottomOuter->Add(bs_BottomInner, 1, wxALL|wxALIGN_RIGHT, 5);
+    bs_AboveSplitterWinSizer->Add(bs_BottomOuter, 0, wxALL|wxEXPAND, 5);
     pnl_OuterBorder->SetSizer(bs_AboveSplitterWinSizer);
     bs_AboveSplitterWinSizer->Fit(pnl_OuterBorder);
     bs_AboveSplitterWinSizer->SetSizeHints(pnl_OuterBorder);
@@ -169,8 +175,8 @@ void DavkoveMazaniSouboruFrame::OnQuit(wxCommandEvent& event)
 
 void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 {
-    wxFileDialog openDlg(this, wxT("Otevřít soubor s názvy pro smazání"), wxEmptyString,
-                         wxEmptyString, wxT("Textový soubor (*.txt)|*.txt|Všechny soubory (*.*)|*.*"),
+    wxFileDialog openDlg(this, wxString(T::Open_file_with_names_to_delete), wxEmptyString,
+                         wxEmptyString, wxString(T::Text_file_Open_Dialog_filter),
                          wxFD_FILE_MUST_EXIST);
 
     if (wxID_OK == openDlg.ShowModal())
@@ -182,7 +188,7 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 
 void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 {
-    wxDirDialog openDlg(this, wxT("Složka, ze které smazat vybrané soubory"), wxEmptyString, wxDD_DIR_MUST_EXIST);
+    wxDirDialog openDlg(this, wxString(T::Folder_to_delete_selected_files_from), wxEmptyString, wxDD_DIR_MUST_EXIST);
 
     if (wxID_OK == openDlg.ShowModal())
     {
@@ -194,16 +200,16 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
 {
     wxMessageDialog msgDlg(this,
-                           wxT("Opravdu chceš smazat vybrané soubory?\nTuto akci nelze vzít zpět."),
+                           wxString(T::Do_you_really_want_to_delete_files_It_is_irreversible),
                            wxMessageBoxCaptionStr,
                            wxYES_NO|wxNO_DEFAULT);
-    msgDlg.SetYesNoLabels(wxT("Smazat"), wxT("Zrušit akci"));
+    msgDlg.SetYesNoLabels(wxString(T::Delete), wxString(T::Cancel));
     if (wxID_YES == msgDlg.ShowModal())
     {
         if (!DeleteFiles())
         {
             wxMessageDialog errDlg(this,
-                                   wxT("Nepodařilo se smazat některé soubory."),
+                                   wxString(T::Could_not_delete_some_files),
                                    wxMessageBoxCaptionStr,
                                    wxICON_ERROR);
             errDlg.ShowModal();
@@ -211,7 +217,7 @@ void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
         else
         {
             wxMessageDialog okDlg(this,
-                                  wxT("Vybrané soubory byly úspěšně smazány."),
+                                  wxString(T::Selected_files_successfully_deleted),
                                   wxMessageBoxCaptionStr,
                                   wxICON_INFORMATION);
             okDlg.ShowModal();

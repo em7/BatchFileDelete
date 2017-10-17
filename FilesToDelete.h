@@ -14,8 +14,6 @@
 
 #include "wx_pch.h"
 
-#include <wx/arrstr.h>
-
 namespace FilesToDelete
 {
     /** \brief Loads the file determined by the fileName

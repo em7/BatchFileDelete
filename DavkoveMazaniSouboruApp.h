@@ -10,7 +10,7 @@
 #ifndef DAVKOVEMAZANISOUBORUAPP_H
 #define DAVKOVEMAZANISOUBORUAPP_H
 
-#include <wx/app.h>
+#include "wx_pch.h"
 
 class DavkoveMazaniSouboruApp : public wxApp
 {

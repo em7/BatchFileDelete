@@ -1,12 +1,18 @@
 # depslib dependency file v1.0
-1508256903 source:c:\prg\davkovemazanisouboru\wx_pch.h
+1508275661 source:c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
 	<wx/intl.h>
 	<wx/string.h>
 	<wx/splitter.h>
+	<wx/hyperlink.h>
 	<wx/file.h>
+	<wx/textfile.h>
+	<wx/app.h>
+	<wx/arrstr.h>
+	<wx/filename.h>
+	<wx/dir.h>
 	<wx/wx.h>
 
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wxprec.h
@@ -2968,36 +2974,41 @@
 	"DavkoveMazaniSouboruMain.h"
 	<wx/image.h>
 
-1508256903 c:\prg\davkovemazanisouboru\wx_pch.h
+1508275661 c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
 	<wx/intl.h>
 	<wx/string.h>
 	<wx/splitter.h>
+	<wx/hyperlink.h>
 	<wx/file.h>
+	<wx/textfile.h>
+	<wx/app.h>
+	<wx/arrstr.h>
+	<wx/filename.h>
+	<wx/dir.h>
 	<wx/wx.h>
 
-1508256903 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
-	<wx/app.h>
+1508275499 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
+	"wx_pch.h"
 
-1508266167 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
+1508275553 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
 	<wx/sizer.h>
 	<wx/stattext.h>
 	<wx/textctrl.h>
 	<wx/checklst.h>
 	<wx/splitter.h>
 	<wx/panel.h>
+	<wx/hyperlink.h>
 	<wx/button.h>
 	<wx/frame.h>
-	<wx/arrstr.h>
-
-1508266606 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"wx_pch.h"
-	"DavkoveMazaniSouboruMain.h"
 	"FilesToDelete.h"
-	<wx/intl.h>
-	<wx/string.h>
+
+1508275591 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+	"DavkoveMazaniSouboruMain.h"
+	"Translations.h"
 
 1446671340 source:c:\prg\davkovemazanisouboru\resource.rc
 	"wx/msw/wx.rc"
@@ -3034,18 +3045,11 @@
 	"wx/window.h"
 	"wx/containr.h"
 
-1508265293 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
+1508275530 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
 	"FilesToDelete.h"
-	<wx/filename.h>
-	<wx/wfstream.h>
-	<wx/txtstrm.h>
-	<wx/dir.h>
-	<wx/filefn.h>
-	<wx/textfile.h>
 
-1508265265 c:\prg\davkovemazanisouboru\filestodelete.h
+1508275536 c:\prg\davkovemazanisouboru\filestodelete.h
 	"wx_pch.h"
-	<wx/arrstr.h>
 
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wfstream.h
 	"wx/defs.h"
@@ -3082,4 +3086,23 @@
 	"wx/convauto.h"
 	"wx/string.h"
 	"wx/dynarray.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\hyperlink.h
+	"wx/defs.h"
+	"wx/control.h"
+	"wx/gtk/hyperlink.h"
+	"wx/msw/hyperlink.h"
+	"wx/generic/hyperlink.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\gtk\hyperlink.h
+	"wx/generic/hyperlink.h"
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\generic\hyperlink.h
+
+1493467238 c:\lib\wxwidgets-3.0.3\include\wx\msw\hyperlink.h
+	"wx/generic/hyperlink.h"
+
+1508275323 c:\prg\davkovemazanisouboru\translations.h
+
+1508274918 source:c:\prg\davkovemazanisouboru\translations.cpp
 

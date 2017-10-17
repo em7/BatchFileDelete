@@ -10,15 +10,19 @@
 #ifndef WX_PCH_H_INCLUDED
 #define WX_PCH_H_INCLUDED
 
-// basic wxWidgets headers
 #include <wx/wxprec.h>
 #include <wx/gbsizer.h>
 #include <wx/msgdlg.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 #include <wx/splitter.h>
-
+#include <wx/hyperlink.h>
 #include <wx/file.h>
+#include <wx/textfile.h>
+#include <wx/app.h>
+#include <wx/arrstr.h>
+#include <wx/filename.h>
+#include <wx/dir.h>
 
 #ifdef __BORLANDC__
     #pragma hdrstop
