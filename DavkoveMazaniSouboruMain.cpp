@@ -10,8 +10,11 @@
 #include "DavkoveMazaniSouboruMain.h"
 
 #include "Translations.h"
+#include "ProjectConstants.h"
 
 //(*InternalHeaders(DavkoveMazaniSouboruFrame)
+#include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 /////////////////////////////////////////////////////////////////////
@@ -82,10 +85,8 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     wxBoxSizer* bs_BottomInner;
     wxBoxSizer* bs_BottomOuter;
     wxBoxSizer* bs_OpenButton;
-    wxStaticBoxSizer* sbs_Directory;
-    wxStaticBoxSizer* sbs_Files;
 
-    Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
+    Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE|wxSYSTEM_MENU, _T("wxID_ANY"));
     SetClientSize(wxSize(800,550));
     SetMinSize(wxSize(800,550));
     MainSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -152,6 +153,8 @@ DavkoveMazaniSouboruFrame::DavkoveMazaniSouboruFrame(wxWindow* parent,wxWindowID
     //*)
 
     Connect(ID_TEXTCTRL_FILES,wxEVT_KILL_FOCUS,(wxObjectEventFunction)&DavkoveMazaniSouboruFrame::txt_Files_OnKillFocus);
+
+    TranslateUI();
 }
 
 DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
@@ -161,6 +164,20 @@ DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
 
     free(m_folderFilesFull);
 }
+
+void DavkoveMazaniSouboruFrame::TranslateUI()
+{
+    SetTitle(wxString(C::Project_name) + " " + wxString(C::Version));
+    sbs_Files->GetStaticBox()->SetLabel(T::n1_Files);
+    st_LabelHeader->SetLabel(T::Set_files_you_need_to_delete);
+    btn_Load->SetLabel(T::Load);
+    sbs_Directory->GetStaticBox()->SetLabel(T::n2_Directory);
+    st_OpenDirectory->SetLabel(T::Open_directory_you_want_delete_files_from);
+    btn_Open->SetLabel(T::Open);
+    txt_FilesToBeDeleted->SetLabel(T::Check_files_to_be_deleted);
+    btn_Delete->SetLabel(T::Delete);
+}
+
 
 /////////////////////////////////////////////////////////////////////
 //                                                                 //
@@ -175,8 +192,8 @@ void DavkoveMazaniSouboruFrame::OnQuit(wxCommandEvent& event)
 
 void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 {
-    wxFileDialog openDlg(this, wxString(T::Open_file_with_names_to_delete), wxEmptyString,
-                         wxEmptyString, wxString(T::Text_file_Open_Dialog_filter),
+    wxFileDialog openDlg(this, T::Open_file_with_names_to_delete, wxEmptyString,
+                         wxEmptyString, T::Text_file_Open_Dialog_filter,
                          wxFD_FILE_MUST_EXIST);
 
     if (wxID_OK == openDlg.ShowModal())
@@ -188,7 +205,7 @@ void DavkoveMazaniSouboruFrame::btn_Load_OnClick(wxCommandEvent& event)
 
 void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 {
-    wxDirDialog openDlg(this, wxString(T::Folder_to_delete_selected_files_from), wxEmptyString, wxDD_DIR_MUST_EXIST);
+    wxDirDialog openDlg(this, T::Folder_to_delete_selected_files_from, wxEmptyString, wxDD_DIR_MUST_EXIST);
 
     if (wxID_OK == openDlg.ShowModal())
     {
@@ -200,25 +217,25 @@ void DavkoveMazaniSouboruFrame::btn_Open_OnClick(wxCommandEvent& event)
 void DavkoveMazaniSouboruFrame::btn_Delete_OnClick(wxCommandEvent& event)
 {
     wxMessageDialog msgDlg(this,
-                           wxString(T::Do_you_really_want_to_delete_files_It_is_irreversible),
-                           wxMessageBoxCaptionStr,
+                           T::Do_you_really_want_to_delete_files_It_is_irreversible,
+                           C::Project_name,
                            wxYES_NO|wxNO_DEFAULT);
-    msgDlg.SetYesNoLabels(wxString(T::Delete), wxString(T::Cancel));
+    msgDlg.SetYesNoLabels(wxString(T::Delete_msg_box), wxString(T::Cancel_deletion));
     if (wxID_YES == msgDlg.ShowModal())
     {
         if (!DeleteFiles())
         {
             wxMessageDialog errDlg(this,
-                                   wxString(T::Could_not_delete_some_files),
-                                   wxMessageBoxCaptionStr,
+                                   T::Could_not_delete_some_files,
+                                   C::Project_name,
                                    wxICON_ERROR);
             errDlg.ShowModal();
         }
         else
         {
             wxMessageDialog okDlg(this,
-                                  wxString(T::Selected_files_successfully_deleted),
-                                  wxMessageBoxCaptionStr,
+                                  T::Selected_files_successfully_deleted,
+                                  C::Project_name,
                                   wxICON_INFORMATION);
             okDlg.ShowModal();
         }

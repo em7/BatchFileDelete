@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1508275661 source:c:\prg\davkovemazanisouboru\wx_pch.h
+1508276254 source:c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
@@ -2974,7 +2974,7 @@
 	"DavkoveMazaniSouboruMain.h"
 	<wx/image.h>
 
-1508275661 c:\prg\davkovemazanisouboru\wx_pch.h
+1508276254 c:\prg\davkovemazanisouboru\wx_pch.h
 	<wx/wxprec.h>
 	<wx/gbsizer.h>
 	<wx/msgdlg.h>
@@ -2990,10 +2990,10 @@
 	<wx/dir.h>
 	<wx/wx.h>
 
-1508275499 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
+1508276254 c:\prg\davkovemazanisouboru\davkovemazanisouboruapp.h
 	"wx_pch.h"
 
-1508275553 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
+1508329697 c:\prg\davkovemazanisouboru\davkovemazanisouborumain.h
 	<wx/sizer.h>
 	<wx/stattext.h>
 	<wx/textctrl.h>
@@ -3006,9 +3006,12 @@
 	"wx_pch.h"
 	"FilesToDelete.h"
 
-1508275591 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
+1508332904 source:c:\prg\davkovemazanisouboru\davkovemazanisouborumain.cpp
 	"DavkoveMazaniSouboruMain.h"
 	"Translations.h"
+	"ProjectConstants.h"
+	<wx/intl.h>
+	<wx/string.h>
 
 1446671340 source:c:\prg\davkovemazanisouboru\resource.rc
 	"wx/msw/wx.rc"
@@ -3045,10 +3048,10 @@
 	"wx/window.h"
 	"wx/containr.h"
 
-1508275530 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
+1508276254 source:c:\prg\davkovemazanisouboru\filestodelete.cpp
 	"FilesToDelete.h"
 
-1508275536 c:\prg\davkovemazanisouboru\filestodelete.h
+1508276254 c:\prg\davkovemazanisouboru\filestodelete.h
 	"wx_pch.h"
 
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\wfstream.h
@@ -3102,7 +3105,9 @@
 1493467238 c:\lib\wxwidgets-3.0.3\include\wx\msw\hyperlink.h
 	"wx/generic/hyperlink.h"
 
-1508275323 c:\prg\davkovemazanisouboru\translations.h
+1508329967 c:\prg\davkovemazanisouboru\translations.h
 
 1508274918 source:c:\prg\davkovemazanisouboru\translations.cpp
+
+1508330100 c:\prg\davkovemazanisouboru\projectconstants.h
 

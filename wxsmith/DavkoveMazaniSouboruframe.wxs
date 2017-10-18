@@ -4,6 +4,7 @@
 		<size>800,550</size>
 		<minsize>800,550</minsize>
 		<id_arg>0</id_arg>
+		<style>wxDEFAULT_FRAME_STYLE|wxSYSTEM_MENU</style>
 		<object class="wxBoxSizer" variable="MainSizer" member="no">
 			<object class="sizeritem">
 				<object class="wxPanel" name="ID_PANEL_OUTER_BORDER" variable="pnl_OuterBorder" member="yes">
@@ -17,7 +18,7 @@
 								<style>wxSP_3D|wxSP_LIVE_UPDATE</style>
 								<object class="wxPanel" name="ID_PANEL_FILES" variable="pnl_Files" member="yes">
 									<minsize>250,550</minsize>
-									<object class="wxStaticBoxSizer" variable="sbs_Files" member="no">
+									<object class="wxStaticBoxSizer" variable="sbs_Files" member="yes">
 										<label>1. Files</label>
 										<orient>wxVERTICAL</orient>
 										<object class="sizeritem">
@@ -54,7 +55,7 @@
 								</object>
 								<object class="wxPanel" name="ID_PANEL_DIRECTORY" variable="pnl_Directory" member="yes">
 									<minsize>250,550</minsize>
-									<object class="wxStaticBoxSizer" variable="sbs_Directory" member="no">
+									<object class="wxStaticBoxSizer" variable="sbs_Directory" member="yes">
 										<label>2. Directory</label>
 										<orient>wxVERTICAL</orient>
 										<object class="sizeritem">

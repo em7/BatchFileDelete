@@ -6,7 +6,7 @@
 		<Option compiler="tdm_gnu_gcc_compiler" />
 		<Build>
 			<Target title="Release Static EN">
-				<Option output="bin/Release/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/BatchFileDelete" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="tdm_gnu_gcc_compiler" />
@@ -24,6 +24,7 @@
 					<Add option="-s" />
 					<Add library="libwxmsw30u_core.a" />
 					<Add library="libwxbase30u.a" />
+					<Add library="libwxmsw30u_adv.a" />
 					<Add library="libwxpng.a" />
 					<Add library="libwxzlib.a" />
 					<Add library="libwxjpeg.a" />
@@ -50,6 +51,7 @@
 					<Add option="-s" />
 					<Add library="libwxmsw30u_core.a" />
 					<Add library="libwxbase30u.a" />
+					<Add library="libwxmsw30u_adv.a" />
 					<Add library="libwxpng.a" />
 					<Add library="libwxzlib.a" />
 					<Add library="libwxjpeg.a" />
@@ -58,7 +60,7 @@
 				</Linker>
 			</Target>
 			<Target title="Debug Wx Monolithic DLL EN">
-				<Option output="bin/DebugMonolithDll/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/DebugMonolithDll/BatchFileDelete" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/DebugMonolithDll/" />
 				<Option type="1" />
 				<Option compiler="tdm_gnu_gcc_compiler" />
@@ -98,7 +100,7 @@
 				</Linker>
 			</Target>
 			<Target title="Debug Static EN">
-				<Option output="bin/Debug/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/BatchFileDelete" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="tdm_gnu_gcc_compiler" />
@@ -115,6 +117,7 @@
 				<Linker>
 					<Add library="libwxmsw30u_core.a" />
 					<Add library="libwxbase30u.a" />
+					<Add library="libwxmsw30ud_adv.a" />
 					<Add library="libwxpng.a" />
 					<Add library="libwxzlib.a" />
 					<Add library="libwxjpegd.a" />
@@ -139,8 +142,9 @@
 				<Linker>
 					<Add option="-s" />
 					<Add library="libwxbase30u.a" />
-					<Add library="libwxjpeg.a" />
 					<Add library="libwxmsw30u_core.a" />
+					<Add library="libwxmsw30u_adv.a" />
+					<Add library="libwxjpeg.a" />
 					<Add library="libwxpng.a" />
 					<Add library="libwxtiff.a" />
 					<Add library="libwxzlib.a" />
@@ -189,6 +193,7 @@
 		<Unit filename="DavkoveMazaniSouboruMain.h" />
 		<Unit filename="FilesToDelete.cpp" />
 		<Unit filename="FilesToDelete.h" />
+		<Unit filename="ProjectConstants.h" />
 		<Unit filename="Translations.h" />
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />

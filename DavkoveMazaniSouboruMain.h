@@ -44,6 +44,7 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         wxArrayString ParseFilesToDelete(); /**< Parses the content of txt_Files and returns array of lines */
         void CheckFilesInDirectory(wxArrayString& filesToDelete); /**< Checks FilesInDirectory if their name is in filesToDelete, unchecks those which are not. */
         bool DeleteFiles(); /**< Deletes the checked files. If success, returns true. */
+        void TranslateUI(); /**< Sets the translated strings to the UI elements. */
 
         //(*Handlers(DavkoveMazaniSouboruFrame)
         void OnQuit(wxCommandEvent& event);
@@ -83,9 +84,11 @@ class DavkoveMazaniSouboruFrame: public wxFrame
         wxButton* btn_Load;
         wxStaticText* txt_FilesToBeDeleted;
         wxButton* btn_Delete;
+        wxStaticBoxSizer* sbs_Directory;
         wxPanel* pnl_Files;
         wxStaticText* st_Web;
         wxStaticText* st_LabelHeader;
+        wxStaticBoxSizer* sbs_Files;
         //*)
 
         DECLARE_EVENT_TABLE()
