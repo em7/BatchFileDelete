@@ -34,3 +34,6 @@
 # Output directories
 bin/
 obj/
+
+# Code::Blocks
+*.layout

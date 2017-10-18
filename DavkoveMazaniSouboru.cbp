@@ -5,31 +5,7 @@
 		<Option title="DavkoveMazaniSouboru" />
 		<Option compiler="tdm_gnu_gcc_compiler" />
 		<Build>
-			<Target title="Debug Static">
-				<Option output="bin/Debug/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="tdm_gnu_gcc_compiler" />
-				<Option use_console_runner="0" />
-				<Option projectLinkerOptionsRelation="2" />
-				<Compiler>
-					<Add option="-g" />
-					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
-				</Compiler>
-				<ResourceCompiler>
-					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
-				</ResourceCompiler>
-				<Linker>
-					<Add library="libwxmsw30u_core.a" />
-					<Add library="libwxbase30u.a" />
-					<Add library="libwxpng.a" />
-					<Add library="libwxzlib.a" />
-					<Add library="libwxjpegd.a" />
-					<Add library="libwxtiffd.a" />
-					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib" />
-				</Linker>
-			</Target>
-			<Target title="Release Static">
+			<Target title="Release Static EN">
 				<Option output="bin/Release/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
@@ -38,6 +14,7 @@
 				<Compiler>
 					<Add option="-fexpensive-optimizations" />
 					<Add option="-Os" />
+					<Add option="-DSTRINGS_ENGLISH" />
 					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
 				</Compiler>
 				<ResourceCompiler>
@@ -54,7 +31,33 @@
 					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib" />
 				</Linker>
 			</Target>
-			<Target title="Debug Wx Monolithic DLL">
+			<Target title="Release Static CZ">
+				<Option output="bin/Release/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="tdm_gnu_gcc_compiler" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-DSTRINGS_CZECH" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="libwxmsw30u_core.a" />
+					<Add library="libwxbase30u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxjpeg.a" />
+					<Add library="libwxtiff.a" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib" />
+				</Linker>
+			</Target>
+			<Target title="Debug Wx Monolithic DLL EN">
 				<Option output="bin/DebugMonolithDll/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/DebugMonolithDll/" />
 				<Option type="1" />
@@ -63,6 +66,7 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DSTRINGS_ENGLISH" />
 					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll/mswud" />
 				</Compiler>
 				<ResourceCompiler>
@@ -73,7 +77,52 @@
 					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll" />
 				</Linker>
 			</Target>
-			<Target title="Release Wx DLL">
+			<Target title="Debug Wx Monolithic DLL CZ">
+				<Option output="bin/DebugMonolithDll/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/DebugMonolithDll/" />
+				<Option type="1" />
+				<Option compiler="tdm_gnu_gcc_compiler" />
+				<Option use_console_runner="0" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DSTRINGS_CZECH" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll/mswud" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll/mswud" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="libwxmsw30ud.a" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll" />
+				</Linker>
+			</Target>
+			<Target title="Debug Static EN">
+				<Option output="bin/Debug/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="tdm_gnu_gcc_compiler" />
+				<Option use_console_runner="0" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DSTRINGS_ENGLISH" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add library="libwxmsw30u_core.a" />
+					<Add library="libwxbase30u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxjpegd.a" />
+					<Add library="libwxtiffd.a" />
+					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_lib" />
+				</Linker>
+			</Target>
+			<Target title="Release Wx DLL EN">
 				<Option output="bin/ReleaseDll/DavkoveMazaniSouboru" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/ReleaseDll/" />
 				<Option type="0" />
@@ -81,6 +130,7 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-DSTRINGS_ENGLISH" />
 					<Add directory="C:/lib/wxWidgets-3.0.3/lib/gcc_dll/mswu" />
 				</Compiler>
 				<ResourceCompiler>
@@ -139,6 +189,7 @@
 		<Unit filename="DavkoveMazaniSouboruMain.h" />
 		<Unit filename="FilesToDelete.cpp" />
 		<Unit filename="FilesToDelete.h" />
+		<Unit filename="Translations.h" />
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
