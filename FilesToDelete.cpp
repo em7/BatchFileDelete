@@ -28,7 +28,7 @@ wxString* LoadFile(const wxString& fileName)
 
     if (! in.ReadAll(content))
     {
-        free(content);
+        delete content;
         return nullptr;
     }
 

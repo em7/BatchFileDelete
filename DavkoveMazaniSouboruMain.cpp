@@ -162,7 +162,7 @@ DavkoveMazaniSouboruFrame::~DavkoveMazaniSouboruFrame()
     //(*Destroy(DavkoveMazaniSouboruFrame)
     //*)
 
-    free(m_folderFilesFull);
+    delete m_folderFilesFull;
 }
 
 void DavkoveMazaniSouboruFrame::TranslateUI()
@@ -266,7 +266,7 @@ void DavkoveMazaniSouboruFrame::LoadFilesToDelete(const wxString& fileName)
     if (nullptr != content)
     {
         txt_Files->SetValue(*content);
-        free(content);
+        delete content;
         UpdateFolderFilesCheck();
     }
 }
@@ -275,7 +275,7 @@ void DavkoveMazaniSouboruFrame::LoadFilesInDirectory(const wxString& dirName)
 {
     clb_FilesInDirectory->Clear();
 
-    free(m_folderFilesFull);
+    delete m_folderFilesFull;
     m_folderFilesFull = FilesToDelete::EnumAllFiles(dirName);
     if (! (nullptr == m_folderFilesFull || m_folderFilesFull->GetCount() < 1))
     {
@@ -287,7 +287,7 @@ void DavkoveMazaniSouboruFrame::LoadFilesInDirectory(const wxString& dirName)
                 clb_FilesInDirectory->Append(*name);
             }
 
-            free(name);
+            delete name;
         }
         UpdateFolderFilesCheck();
     }
